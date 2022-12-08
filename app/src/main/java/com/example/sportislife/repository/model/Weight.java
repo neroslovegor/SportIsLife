@@ -20,7 +20,7 @@ public class Weight {
     private Date date;
 
     @ColumnInfo(name = "weight")
-    private float weight;
+    private Float weight;
 
 
     public int getUid() {
@@ -37,10 +37,10 @@ public class Weight {
         this.date = date;
     }
 
-    public float getWeight() {
+    public Float getWeight() {
         return weight;
     }
-    public void setWeight(float weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
     }
 

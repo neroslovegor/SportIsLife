@@ -15,18 +15,18 @@ import java.util.List;
 public interface DaoWeight {
 
     @Insert
-    Void insertWeight(Weight weight);
+    Void insert(Weight weight);
 
-    @Query("SELECT * FROM Weight ORDER BY date desc")
-    LiveData<List<Weight>> fetchAllWeights();
+    @Query("SELECT * FROM Weight ORDER BY uid")
+    List<Weight> getAll();
 
     @Query("SELECT * FROM Weight WHERE uid =:WeightId")
-    LiveData<Weight> getWeight(int WeightId);
+    Weight get(int WeightId);
 
     @Update
-    void updateWeight(Weight weight);
+    void update(Weight weight);
 
     @Delete
-    void deleteWeight(Weight weight);
+    void delete(Weight weight);
 
 }

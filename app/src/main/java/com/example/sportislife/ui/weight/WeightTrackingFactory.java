@@ -1,5 +1,6 @@
 package com.example.sportislife.ui.weight;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -10,15 +11,20 @@ import com.example.sportislife.repository.WeightRepository;
 
 public class WeightTrackingFactory implements ViewModelProvider.Factory {
 
-    private final WeightRepository weightRepository;
+    private WeightRepository repository;
+    private Application application;
     
-    public WeightTrackingFactory(Context context) {
-        this.weightRepository = new WeightRepository(context);
+    public WeightTrackingFactory(WeightRepository repository, Application application) {
+        this.repository = repository;
+        this.application = application;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new WeightTrackingViewModel(weightRepository) ;
+        if (modelClass.isAssignableFrom(WeightTrackingViewModel.class)) {
+            return (T) new WeightTrackingViewModel(repository, application);
+        }
+        throw new IllegalArgumentException("Unknown View Model Class");
     }
 }

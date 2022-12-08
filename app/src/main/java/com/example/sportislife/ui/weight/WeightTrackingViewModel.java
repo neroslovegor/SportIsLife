@@ -1,82 +1,170 @@
 package com.example.sportislife.ui.weight;
 
+import android.app.Application;
 import android.graphics.Color;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.sportislife.repository.WeightRepository;
 import com.example.sportislife.repository.model.Weight;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class WeightTrackingViewModel extends ViewModel {
 
-    private final WeightRepository weightRepository;
+    private WeightRepository repository;
+    private Application application;
 
-    private final MutableLiveData<String> currentDateLive;
-    private final MutableLiveData<LineData> weightDataLive;
-
-    public WeightTrackingViewModel(WeightRepository weightRepository) {
-        this.weightRepository = weightRepository;
-
-        currentDateLive = new MutableLiveData<>();
-        weightDataLive = new MutableLiveData<>();
-
-        currentDateLive.setValue(initCurrentDate());
-        weightDataLive.setValue(initWeightData());
+    private MutableLiveData<String> currentDate;
+    public MutableLiveData<String> getCurrentDate() {
+        return currentDate;
+    }
+    public void setCurrentDate() {
+        currentDate.setValue(initCurrentDate());
     }
 
+    private MutableLiveData<List<Weight>> weightData;
+    public MutableLiveData<List<Weight>> getWeightData() {
+        return weightData;
+    }
+    public void setWeightData() {
+        weightData.setValue(initWeightData());
+    }
+
+    private MutableLiveData<LineChart> lineChartData;
+    public MutableLiveData<LineChart> getLineChart() {
+        return lineChartData;
+    }
+    public void setLineChart() {
+        lineChartData.setValue(initLineChart());
+    }
+
+    public MutableLiveData<String> inputDate;
+    //public void setInputDate(String date) { inputDate.setValue(date); }
+    public MutableLiveData<String> inputWeight;
+    //public void setInputWeight(String weight) { inputDate.setValue(weight); }
+
+    private MutableLiveData<Boolean> errorWeight;
+    public MutableLiveData<Boolean> getErrorWeight() {
+        return errorWeight;
+    }
+    public void doneErrorWeight() {
+        errorWeight.setValue(false);
+    }
+
+    public WeightTrackingViewModel(WeightRepository repository, Application application) {
+        this.repository = repository;
+        this.application = application;
+
+        currentDate = new MutableLiveData<>();
+        weightData = new MutableLiveData<>();
+        lineChartData = new MutableLiveData<>();
+
+        inputDate = new MutableLiveData<>();
+        inputWeight = new MutableLiveData<>();
+
+        errorWeight = new MutableLiveData<>();
+
+        updateData();
+    }
+
+    private void updateData() {
+        setCurrentDate();
+        setWeightData();
+        setLineChart();
+        inputWeight.setValue(null);
+    }
     private String initCurrentDate() {
         return new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(new Date());
     }
+    private List<Weight> initWeightData() {
+        List<Weight> weights = repository.getAll();
+        return weights;
+    }
+    private LineChart initLineChart() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-    private LineData initWeightData() {
-        List<Weight> weights = weightRepository.getWeights().getValue();
+        LineChart lineChart = new LineChart(application.getApplicationContext());
+
+        List<Weight> weights = repository.getAll();
         List<Entry> weightsData = new ArrayList<>();
+        List<String> datesData = new ArrayList<>();
 
-        if (weights == null)  return initLineData(null);
+        if (weights == null) return null;
 
-        int counter = 1;
+        int counter = 0;
         for (Weight weight : weights) {
             weightsData.add(new Entry(counter++, weight.getWeight()));
+            datesData.add(simpleDateFormat.format(weight.getDate()));
         }
 
-//        bodyData.add(new Entry(1, 85));
-//        bodyData.add(new Entry(2, 80));
-//        bodyData.add(new Entry(3, 85));
-//        bodyData.add(new Entry(4, 70));
-//
-        return initLineData(weightsData);
-    }
-
-    private LineData initLineData (List<Entry> weightsData) {
         LineDataSet lineDataSet = new LineDataSet(weightsData, "Вес");
         lineDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         lineDataSet.setValueTextColor(Color.BLACK);
-        lineDataSet.setValueTextSize(32f);
+        lineDataSet.setValueTextSize(16f);
 
-        return new LineData(lineDataSet);
+        lineChart.setData(new LineData(lineDataSet));
+
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setGranularity(1f);
+        lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(datesData));
+
+        return lineChart;
     }
 
-    public void saveWeightData(Date date, Float weight) {
-        weightRepository.insertWeight(date, weight);
-    }
+    public void submitButton() {
+        try {
+            if (inputDate.getValue() != null && inputWeight.getValue() != null) {
+                if (inputDate.getValue().length() > 0 && inputWeight.getValue().length() > 0) {
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+                    Date date = simpleDateFormat.parse(Objects.requireNonNull(inputDate.getValue()));
+                    Float weight = Float.parseFloat(Objects.requireNonNull(inputWeight.getValue()));
 
-    public LiveData<String> getCurrentDate() {
-        return currentDateLive;
+                    Weight weightEntity = new Weight();
+                    weightEntity.setDate(date);
+                    weightEntity.setWeight(weight);
+
+                    repository.insert(weightEntity);
+
+                    updateData();
+                } else {
+                    errorWeight.setValue(true);
+                }
+            } else {
+                errorWeight.setValue(true);
+            }
+        } catch (ParseException exception) {
+            exception.printStackTrace();
+        }
     }
-    public MutableLiveData<LineData> getWeightData() {
-        return weightDataLive;
+    public void deleteButton(int id) {
+        List<Weight> weights = repository.getAll();
+
+        if (weights == null) return;
+
+        int counter = 0;
+        for (Weight weight : weights) {
+            if (id == counter) {
+                repository.delete((weight.getUid()));
+            }
+            counter++;
+        }
+
+        updateData();
     }
 
     @Override

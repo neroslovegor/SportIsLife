@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".ui.weight.WeightTrackingFragment" >
+
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.example.sportislife.ui.weight.WeightTrackingViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="10dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,6 +55,7 @@
                     android:id="@+id/editTextDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@={myViewModel.inputDate}"
                     android:hint="Введите дату"
                     android:focusable="false"
                     android:inputType="date"
@@ -61,6 +65,7 @@
                     android:id="@+id/editTextWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@={myViewModel.inputWeight}"
                     android:hint="Введите вес"
                     android:inputType="numberDecimal"
                     android:textSize="14dp" />
@@ -79,7 +84,8 @@
                     android:clickable="true"
                     app:elevation="0dp"
                     android:src="@drawable/plus"
-                    app:maxImageSize="35dp" />
+                    app:maxImageSize="35dp"
+                    android:onClick="@{()->myViewModel.submitButton()}"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -177,4 +183,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</layout>
