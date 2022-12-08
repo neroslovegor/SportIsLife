@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -24,7 +23,6 @@ import com.example.sportislife.db.AppDatabase;
 import com.example.sportislife.repository.WeightRepository;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 public class WeightTrackingFragment extends Fragment {
 
@@ -42,11 +40,11 @@ public class WeightTrackingFragment extends Fragment {
         Application application = this.requireActivity().getApplication();
         DaoWeight dao = AppDatabase.getInstance(application).daoWeight();
         WeightRepository repository = new WeightRepository(dao);
-        WeightTrackingFactory factory = new WeightTrackingFactory(repository, application   );
+        WeightTrackingFactory factory = new WeightTrackingFactory(repository, application);
 
         viewModel = new ViewModelProvider(this, factory).get(WeightTrackingViewModel.class);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_weight_tracking, container, false);
-        binding.setMyViewModel(viewModel);
+        binding.setWeightTrackingViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
         editTextDate = binding.editTextDate;

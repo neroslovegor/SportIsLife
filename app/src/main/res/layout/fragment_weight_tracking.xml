@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="myViewModel"
+            name="weightTrackingViewModel"
             type="com.example.sportislife.ui.weight.WeightTrackingViewModel" />
     </data>
 
@@ -55,7 +55,7 @@
                     android:id="@+id/editTextDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={myViewModel.inputDate}"
+                    android:text="@={weightTrackingViewModel.inputDate}"
                     android:hint="Введите дату"
                     android:focusable="false"
                     android:inputType="date"
@@ -65,7 +65,7 @@
                     android:id="@+id/editTextWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={myViewModel.inputWeight}"
+                    android:text="@={weightTrackingViewModel.inputWeight}"
                     android:hint="Введите вес"
                     android:inputType="numberDecimal"
                     android:textSize="14dp" />
@@ -85,7 +85,7 @@
                     app:elevation="0dp"
                     android:src="@drawable/plus"
                     app:maxImageSize="35dp"
-                    android:onClick="@{()->myViewModel.submitButton()}"/>
+                    android:onClick="@{()->weightTrackingViewModel.submitButton()}"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -105,7 +105,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
             android:orientation="vertical"
             android:background="@drawable/cardborder">
@@ -142,42 +142,6 @@
                 android:id="@+id/listViewHistoryWeight"
                 android:layout_width="match_parent"
                 android:layout_height="160dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/cardborder"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="ИМТ:"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="145dp"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="Статус:"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

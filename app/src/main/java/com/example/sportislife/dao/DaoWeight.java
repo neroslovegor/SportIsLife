@@ -20,8 +20,8 @@ public interface DaoWeight {
     @Query("SELECT * FROM Weight ORDER BY uid")
     List<Weight> getAll();
 
-    @Query("SELECT * FROM Weight WHERE uid =:WeightId")
-    Weight get(int WeightId);
+    @Query("SELECT * FROM Weight WHERE uid =:weightId")
+    Weight get(int weightId);
 
     @Update
     void update(Weight weight);

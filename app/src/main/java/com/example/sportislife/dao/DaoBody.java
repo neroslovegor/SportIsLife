@@ -1,6 +1,5 @@
 package com.example.sportislife.dao;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,17 +14,17 @@ import java.util.List;
 public interface DaoBody {
 
     @Insert
-    Void insertBody(Body body);
+    Void insert(Body body);
 
-    @Query("SELECT * FROM Body ORDER BY date desc")
-    LiveData<List<Body>> fetchAllBody();
+    @Query("SELECT * FROM Body ORDER BY uid")
+    List<Body> getAll();
 
     @Query("SELECT * FROM Body WHERE uid =:bodyId")
-    LiveData<Body> getBody(int bodyId);
+    Body get(int bodyId);
 
     @Update
-    void updateBody(Body body);
+    void update(Body body);
 
     @Delete
-    void deleteBody(Body body);
+    void delete(Body body);
 }

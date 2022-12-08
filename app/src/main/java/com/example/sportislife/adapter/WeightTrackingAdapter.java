@@ -46,7 +46,7 @@ public class WeightTrackingAdapter extends BaseAdapter {
         View view = convertView;
 
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.item_weight_history, parent, false);
+            view = layoutInflater.inflate(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, parent, false);
         }
 
         TextView textDate = (TextView) view.findViewById(R.id.dateHistory);
