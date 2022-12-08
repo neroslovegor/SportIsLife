@@ -11,25 +11,38 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class BodyViewModel extends ViewModel {
 
-    //private final MutableLiveData<String> mText;
-    private final MutableLiveData<LineData> resultBodyDataLive;
+    //rivate AppRepository appRepository;
+
+    private final MutableLiveData<String> currentDateLive;
+    private final MutableLiveData<LineData> resultWeightDataLive;
 
     public BodyViewModel() {
-//        mText = new MutableLiveData<>();
-//        mText.setValue("This is body fragment");
-        resultBodyDataLive = new MutableLiveData<>();
-        resultBodyDataLive.setValue(initLineBodyData());
+        //appRepository = new AppRepository(context);
+
+        currentDateLive = new MutableLiveData<>();
+        resultWeightDataLive = new MutableLiveData<>();
+
+        currentDateLive.setValue(initCurrentDate());
+        resultWeightDataLive.setValue(initLineWeightData());
     }
 
-//    public LiveData<String> getText() {
-//        return mText;
-//    }
+    public void save(Date date, Float weight) {
+        //appRepository.insertBody(date, weight);
+    }
 
-    private LineData initLineBodyData() {
+    private String initCurrentDate() {
+        String date = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(new Date());
+        return date;
+    }
+
+    private LineData initLineWeightData() {
         ArrayList<Entry> bodyData = new ArrayList<>();
 
         bodyData.add(new Entry(1, 85));
@@ -47,8 +60,11 @@ public class BodyViewModel extends ViewModel {
         return lineData;
     }
 
-    public MutableLiveData<LineData> getBodyData() {
-        return resultBodyDataLive;
+    public LiveData<String> getCurrentDate() {
+        return currentDateLive;
+    }
+    public MutableLiveData<LineData> getWeightData() {
+        return resultWeightDataLive;
     }
 
     @Override

@@ -22,4 +22,11 @@
         android:name="com.example.sportislife.ui.statistics.StatisticsFragment"
         android:label="@string/menu_statistics"
         tools:layout="@layout/fragment_statistics" />
+
+    <fragment
+        android:id="@+id/nav_weight_tracking"
+        android:name="com.example.sportislife.ui.weight.WeightTrackingFragment"
+        android:label="@string/menu_weight_tracking"
+        tools:layout="@layout/fragment_weight_tracking" />
+
 </navigation>

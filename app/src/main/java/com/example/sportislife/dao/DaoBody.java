@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.sportislife.model.Body;
+import com.example.sportislife.repository.model.Body;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface DaoBody {
     Void insertBody(Body body);
 
     @Query("SELECT * FROM Body ORDER BY date desc")
-    LiveData<List<Body>> fetchAllTasks();
+    LiveData<List<Body>> fetchAllBody();
 
     @Query("SELECT * FROM Body WHERE uid =:bodyId")
     LiveData<Body> getBody(int bodyId);
