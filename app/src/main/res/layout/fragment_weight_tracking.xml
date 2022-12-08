@@ -52,7 +52,7 @@
                 android:paddingStart="15dp">
 
                 <EditText
-                    android:id="@+id/editTextDateWT"
+                    android:id="@+id/editTextDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={weightTrackingViewModel.inputDate}"
@@ -62,7 +62,7 @@
                     android:textSize="14dp" />
 
                 <EditText
-                    android:id="@+id/editTextWeightWT"
+                    android:id="@+id/editTextWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={weightTrackingViewModel.inputWeight}"
@@ -96,7 +96,7 @@
             android:background="@drawable/cardborder" >
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/weightLineChartWT"
+                android:id="@+id/weightLineChart"
                 android:layout_width="match_parent"
                 android:layout_height="350dp" />
 
@@ -138,7 +138,7 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/listViewHistoryWeightWT"
+                android:id="@+id/listViewHistoryWeight"
                 android:layout_width="match_parent"
                 android:layout_height="160dp" />
 

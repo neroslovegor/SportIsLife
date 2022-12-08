@@ -21,6 +21,8 @@ import com.example.sportislife.dao.DaoWorkout;
 import com.example.sportislife.databinding.FragmentWorkoutBinding;
 import com.example.sportislife.db.AppDatabase;
 import com.example.sportislife.repository.WorkoutRepository;
+import com.example.sportislife.ui.statistics.StatisticsFactory;
+import com.example.sportislife.ui.statistics.StatisticsViewModel;
 
 public class WorkoutFragment extends Fragment {
 
