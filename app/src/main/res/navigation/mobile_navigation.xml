@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_workout">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.sportislife.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_workout"
+        android:name="com.example.sportislife.ui.workout.WorkoutFragment"
+        android:label="@string/menu_workout"
+        tools:layout="@layout/fragment_workout" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.sportislife.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_body"
+        android:name="com.example.sportislife.ui.body.BodyFragment"
+        android:label="@string/menu_body"
+        tools:layout="@layout/fragment_body" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.sportislife.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_statistics"
+        android:name="com.example.sportislife.ui.statistics.StatisticsFragment"
+        android:label="@string/menu_statistics"
+        tools:layout="@layout/fragment_statistics" />
 </navigation>
