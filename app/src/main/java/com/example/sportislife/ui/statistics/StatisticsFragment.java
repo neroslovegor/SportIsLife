@@ -7,26 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sportislife.R;
-import com.example.sportislife.dao.DaoWeight;
 import com.example.sportislife.dao.DaoWorkout;
 import com.example.sportislife.databinding.FragmentStatisticsBinding;
-import com.example.sportislife.databinding.FragmentWeightTrackingBinding;
 import com.example.sportislife.db.AppDatabase;
-import com.example.sportislife.repository.WeightRepository;
 import com.example.sportislife.repository.WorkoutRepository;
-import com.example.sportislife.ui.weight.WeightTrackingFactory;
-import com.example.sportislife.ui.weight.WeightTrackingViewModel;
-import com.example.sportislife.ui.workout.WorkoutFactory;
-import com.example.sportislife.ui.workout.WorkoutViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 
