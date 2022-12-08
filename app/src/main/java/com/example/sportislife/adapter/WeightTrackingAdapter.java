@@ -49,8 +49,8 @@ public class WeightTrackingAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.item_weight_history, null);
         }
 
-        TextView textDate = (TextView) view.findViewById(R.id.dateHistoryWT);
-        TextView textWeight = (TextView) view.findViewById(R.id.weightHistoryWT);
+        TextView textDate = (TextView) view.findViewById(R.id.dateHistory);
+        TextView textWeight = (TextView) view.findViewById(R.id.weightHistory);
 
         Weight weight = getWeight(position);
 

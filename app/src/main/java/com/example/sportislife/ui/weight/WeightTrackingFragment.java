@@ -46,10 +46,10 @@ public class WeightTrackingFragment extends Fragment {
         binding.setWeightTrackingViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
-        editTextDate = binding.editTextDateWT;
-        editTextWeight = binding.editTextWeightWT;
-        weightLineChart = binding.weightLineChartWT;
-        listViewHistoryWeight = binding.listViewHistoryWeightWT;
+        editTextDate = binding.editTextDate;
+        editTextWeight = binding.editTextWeight;
+        weightLineChart = binding.weightLineChart;
+        listViewHistoryWeight = binding.listViewHistoryWeight;
 
         viewModel.getCurrentDate().observe(getViewLifecycleOwner(), editTextDate::setText);
 

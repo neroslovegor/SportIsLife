@@ -86,6 +86,7 @@ public class WeightTrackingViewModel extends ViewModel {
         setCurrentDate();
         setWeightData();
         setLineChart();
+
         inputWeight.setValue(null);
     }
     private String initCurrentDate() {

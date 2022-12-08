@@ -61,17 +61,17 @@ public class BodyFragment extends Fragment {
         binding.setBodyViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
-        editTextName = binding.editTextNameB;
-        editTextWeight = binding.editTextWeightB;
-        editTextHeight = binding.editTextHeightB;
-        btnCalendar = binding.btnCalendarB;
-        radGroupGender = binding.radGroupGenderB;
-        radBtnMale = binding.radBtnMaleB;
-        radBtnFemale = binding.radBtnFemaleB;
-        physicalActivity = binding.physicalActivityB;
-        textViewBMI = binding.textViewBMIB;
-        textViewBMIStatus = binding.textViewBMIStatusB;
-        textViewCalorieNorm = binding.textViewCalorieNormB;
+        editTextName = binding.editTextName;
+        editTextWeight = binding.editTextWeight;
+        editTextHeight = binding.editTextHeight;
+        btnCalendar = binding.btnCalendar;
+        radGroupGender = binding.radGroupGender;
+        radBtnMale = binding.radBtnMale;
+        radBtnFemale = binding.radBtnFemale;
+        physicalActivity = binding.physicalActivity;
+        textViewBMI = binding.textViewBMI;
+        textViewBMIStatus = binding.textViewBMIStatus;
+        textViewCalorieNorm = binding.textViewCalorieNorm;
 
         initDatePicker();
         btnCalendar.setOnClickListener(new View.OnClickListener() {
