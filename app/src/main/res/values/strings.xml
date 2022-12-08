@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SporIsLife</string>
+    <string name="app_name">SportIsLife</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -11,6 +11,7 @@
     <string name="menu_body">Body</string>
     <string name="menu_statistics">Statistics</string>
     <string name="menu_weight_tracking">Weight tracking</string>
+    <string name="menu_video">Video</string>
     
     <string name="error_this_field_cannot_be_empty">Это поле не может быть пустым</string>
 

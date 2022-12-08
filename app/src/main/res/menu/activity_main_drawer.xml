@@ -20,5 +20,9 @@
             android:id="@+id/nav_weight_tracking"
             android:icon="@drawable/ic_menu_weight_tracking"
             android:title="@string/menu_weight_tracking" />
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_video_library"
+            android:title="@string/menu_video" />
     </group>
 </menu>
