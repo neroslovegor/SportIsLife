@@ -8,35 +8,46 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
+import com.example.sportislife.dao.DaoBody;
+import com.example.sportislife.dao.DaoWeight;
 import com.example.sportislife.db.AppDatabase;
 import com.example.sportislife.repository.model.Body;
+import com.example.sportislife.repository.model.Weight;
 
 import java.util.Date;
 import java.util.List;
 
 public class BodyRepository {
 
-//    public void insertBody(Date date, String gender, float weight, float height, String physicalActivity) {
-//        Body body = new Body();
-//        body.setDate(date);
-//        body.setGender(gender);
-//        body.setWeight(weight);
-//        body.setHeight(height);
-//        body.setPhysicalActivity(physicalActivity);
-//
-//        appDatabase.daoBody().insertBody(body);
-//    }
-//
-//    public void deleteBody(int id) {
-//        LiveData<Body> body = getBody(id);
-//        appDatabase.daoBody().deleteBody(body.getValue());
-//    }
-//
-//    public LiveData<Body> getBody(int id) {
-//        return appDatabase.daoBody().getBody(id);
-//    }
-//
-//    public LiveData<List<Body>> getBodys() {
-//        return appDatabase.daoBody().fetchAllBody();
-//    }
+    private DaoBody dao;
+
+    public BodyRepository(DaoBody dao) {
+        this.dao = dao;
+    }
+
+    public Body get(int id) {
+        return dao.get(id);
+    }
+
+    public List<Body> getAll() {
+        return dao.getAll();
+    }
+
+    public void insert(Body body) {
+        dao.insert(body);
+    }
+
+    public void update(Body body) {
+        if (body != null) {
+            dao.update(body);
+        }
+    }
+
+    public void delete(int id) {
+        Body body = get(id);
+
+        if(body != null) {
+            dao.delete(body);
+        }
+    }
 }

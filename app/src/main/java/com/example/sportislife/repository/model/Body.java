@@ -15,18 +15,21 @@ public class Body {
     @PrimaryKey(autoGenerate = true)
     private int uid;
 
-    @ColumnInfo(name = "date")
+    @ColumnInfo(name = "name")
+    private String name;
+
+    @ColumnInfo(name = "weight")
+    private Float weight;
+
+    @ColumnInfo(name = "height")
+    private Float height;
+
+    @ColumnInfo(name = "birthday_date")
     @TypeConverters({DateConverter.class})
     private Date date;
 
     @ColumnInfo(name = "gender")
     private String gender;
-
-    @ColumnInfo(name = "weight")
-    private float weight;
-
-    @ColumnInfo(name = "height")
-    private float height;
 
     @ColumnInfo(name = "physical_activity")
     private String physicalActivity;
@@ -37,6 +40,27 @@ public class Body {
     }
     public void setUid(int id) {
         this.uid = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Float getWeight() {
+        return weight;
+    }
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public Float getHeight() {
+        return height;
+    }
+    public void setHeight(Float height) {
+        this.height = height;
     }
 
     public Date getDate() {
@@ -51,20 +75,6 @@ public class Body {
     }
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-    public void setHeight(float height) {
-        this.height = height;
     }
 
     public String getPhysicalActivity() {

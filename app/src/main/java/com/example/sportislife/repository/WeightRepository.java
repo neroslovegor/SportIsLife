@@ -1,11 +1,8 @@
 package com.example.sportislife.repository;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.sportislife.dao.DaoWeight;
 import com.example.sportislife.repository.model.Weight;
 
-import java.util.Date;
 import java.util.List;
 
 public class WeightRepository {

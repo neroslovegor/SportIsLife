@@ -22,7 +22,6 @@ public class Weight {
     @ColumnInfo(name = "weight")
     private Float weight;
 
-
     public int getUid() {
         return uid;
     }

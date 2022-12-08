@@ -131,6 +131,7 @@ public class WeightTrackingViewModel extends ViewModel {
             if (inputDate.getValue() != null && inputWeight.getValue() != null) {
                 if (inputDate.getValue().length() > 0 && inputWeight.getValue().length() > 0) {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
                     Date date = simpleDateFormat.parse(Objects.requireNonNull(inputDate.getValue()));
                     Float weight = Float.parseFloat(Objects.requireNonNull(inputWeight.getValue()));
 

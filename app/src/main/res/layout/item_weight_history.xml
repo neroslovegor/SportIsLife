@@ -3,27 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.weight.WeightTrackingFragment" >
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="myViewModel"-->
-<!--            type="com.example.sportislife.ui.weight.WeightTrackingViewModel" />-->
-<!--    </data>-->
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/dateHistory"
+            android:id="@+id/dateHistoryWT"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:padding="10dp" />
 
         <TextView
-            android:id="@+id/weightHistory"
+            android:id="@+id/weightHistoryWT"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
